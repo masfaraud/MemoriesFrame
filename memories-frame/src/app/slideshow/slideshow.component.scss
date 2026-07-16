@@ -17,6 +17,15 @@
 
     object-fit: contain;
    z-index: 0;
+
+  opacity:1;
+  transition:
+    opacity 1s ease-in-out;
+}
+
+
+.photo.fade {
+  opacity:0;
 }
 
 app-clock {

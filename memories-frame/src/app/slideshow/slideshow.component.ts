@@ -13,7 +13,8 @@ import { ClockComponent } from '../clock/clock.component';
 
 })
 export class SlideshowComponent implements OnInit {
-
+  
+  transitioning = false;
   @Output() photoChanged = new EventEmitter<Photo>();
   currentIndex = 0;
   currentPhoto: Photo;
@@ -28,30 +29,33 @@ export class SlideshowComponent implements OnInit {
       location: "Annecy"
     },
     {
-      id: "1",
+      id: "2",
       path: "photo2.jpg",
       filename: "photo2.jpg",
-      takenAt: new Date("2020-07-15"),
-      latitude: 45.899,
-      longitude: 6.129,
-      location: "USA"
+      takenAt: new Date("2023-02-11"),
+      latitude: 48.5496,
+      longitude: 2.1918,
+      location: "La ferté alais"
     }
   ];
 
 
   showNext() {
 
-    this.currentIndex = (this.currentIndex+1)%this.photos.length;
-    this.currentPhoto = this.photos[this.currentIndex]
+    this.transitioning = true;
+    setTimeout(() => {
 
-    this.photoChanged.emit(
-      this.currentPhoto
-    );
+      this.currentIndex = (this.currentIndex+1)%this.photos.length;
+      this.currentPhoto = this.photos[this.currentIndex]
+      this.transitioning = false;
+
+    }, 1000);
+
+    
   }
 
  ngOnInit(){
   this.currentPhoto = this.photos[0]
-
 
    setInterval(()=>{
 
