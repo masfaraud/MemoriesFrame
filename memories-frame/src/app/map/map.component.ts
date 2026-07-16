@@ -1,7 +1,8 @@
 import {
   Component,
   Input,
-  AfterViewInit
+  AfterViewInit,
+  OnChanges
 } from '@angular/core';
 
 import * as L from 'leaflet';
@@ -11,44 +12,52 @@ import { Photo } from '../models/photos.model';
 @Component({
   selector: 'app-map',
   standalone: true,
-  templateUrl:'./map.component.html',
-  styleUrl:'./map.component.scss'
+  templateUrl: './map.component.html',
+  styleUrl: './map.component.scss'
 })
 export class MapComponent
-  implements AfterViewInit {
+  implements OnChanges, AfterViewInit {
 
   @Input() photo?: Photo;
 
+  private map?: L.Map;
+  private marker?: L.Marker;
 
-  ngAfterViewInit() {
-  console.log('ma2p', this.photo)
-    if (this.photo !== undefined && this.photo.latitude && this.photo.longitude){
-      console.log('map')
-      const map = L.map('map')
-        .setView(
-          [
-            this.photo.latitude,
-            this.photo.longitude
-          ],
-          12
-        );
+  ngAfterViewInit(): void {
+    this.map = L.map('map', {
+      zoomControl: false
+    }).setView([0, 0], 4);
 
+    L.tileLayer(
+      'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+    ).addTo(this.map);
 
-      L.tileLayer(
-        'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
-      )
-        .addTo(map);
+    this.marker = L.marker([0, 0]).addTo(this.map);
 
+    // If a photo was already received before the view existed
+    this.updateMap();
+  }
 
-      L.marker(
-        [
-          this.photo.latitude,
-          this.photo.longitude
-        ])
-        .addTo(map);
+  ngOnChanges() {
+    this.updateMap()
+  }
 
-
+  updateMap() {
+    if (!this.map || !this.marker || !this.photo) {
+      return;
     }
+
+    if (this.photo.latitude == null || this.photo.longitude == null) {
+      return;
+    }
+
+    const pos: L.LatLngExpression = [
+      this.photo.latitude,
+      this.photo.longitude
+    ];
+
+    this.marker.setLatLng(pos);
+    this.map.setView(pos, 10);
 
   }
 

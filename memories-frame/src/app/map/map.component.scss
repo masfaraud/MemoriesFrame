@@ -1,4 +1,10 @@
-#map {
- height:250px;
- width:250px;
+.map {
+  width: 220px;
+  height: 220px;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  border: 4px solid white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }

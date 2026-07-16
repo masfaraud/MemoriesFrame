@@ -1,38 +1,23 @@
+import { DatePipe } from '@angular/common';
 import {Component} from '@angular/core';
 
 
 @Component({
  selector:'app-clock',
  standalone:true,
- template:`
- <div class="clock">
-   {{time}}
- </div>
- `,
- styles:[`
- .clock {
-   font-size:50px;
-   margin:40px;
- }
- `]
+ templateUrl: './clock.component.html',
+ styleUrl: './clock.component.scss',
+ imports: [DatePipe]
 })
 export class ClockComponent {
 
- time="";
+ time: Date;
 
  constructor(){
 
    setInterval(()=>{
 
-     this.time =
-       new Date()
-       .toLocaleTimeString(
-          [],
-          {
-            hour:"2-digit",
-            minute:"2-digit"
-          }
-       );
+     this.time = new Date();
 
    },1000);
 

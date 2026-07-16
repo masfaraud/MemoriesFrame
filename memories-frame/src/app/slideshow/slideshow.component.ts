@@ -1,11 +1,16 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { Photo } from '../models/photos.model';
+import { DatePipe } from '@angular/common';
+import { MapComponent } from '../map/map.component';
+import { ClockComponent } from '../clock/clock.component';
 
 @Component({
  selector:'app-slideshow',
  standalone:true,
  templateUrl:'./slideshow.component.html',
- styleUrl:'./slideshow.component.scss'
+ styleUrl:'./slideshow.component.scss',
+ imports: [DatePipe, MapComponent, ClockComponent]
+
 })
 export class SlideshowComponent implements OnInit {
 

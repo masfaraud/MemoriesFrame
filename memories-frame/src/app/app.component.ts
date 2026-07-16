@@ -7,18 +7,11 @@ import { Photo } from './models/photos.model';
 
 @Component({
   selector: 'app-root',
-  imports: [SlideshowComponent, ClockComponent, MapComponent],
+  imports: [SlideshowComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'memories-frame';
 
-  currentPhoto?: Photo;
-
-
-  onPhotoChanged(photo: Photo) {
-    console.log(photo)
-    this.currentPhoto = photo;
-  }
 }
