@@ -12,12 +12,17 @@
         [photo]="currentPhoto">
     </app-map>
 
-    <div class="metadata">
-
-        <div>{{currentPhoto.location}}</div>
-
-        <div>{{currentPhoto.takenAt | date}}</div>
-
+<div class="metadata">
+    <div class="location">
+        {{ currentPhoto.location }}
     </div>
+
+    <div class="date">
+        {{ currentPhoto.takenAt | date:'EEEE d MMMM y' }}
+    </div>
+    <div class="date">
+        {{ currentPhoto.takenAt | timeAgo:false }}
+    </div>
+</div>
 
 </div>

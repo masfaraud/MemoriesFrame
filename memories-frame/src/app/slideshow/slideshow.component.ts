@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { Photo } from '../models/photos.model';
 import { DatePipe } from '@angular/common';
+import { TimeAgoPipe } from '../pipes/time-ago.pipe';
 import { MapComponent } from '../map/map.component';
 import { ClockComponent } from '../clock/clock.component';
 
@@ -9,7 +10,7 @@ import { ClockComponent } from '../clock/clock.component';
  standalone:true,
  templateUrl:'./slideshow.component.html',
  styleUrl:'./slideshow.component.scss',
- imports: [DatePipe, MapComponent, ClockComponent]
+ imports: [DatePipe, MapComponent, ClockComponent, TimeAgoPipe]
 
 })
 export class SlideshowComponent implements OnInit {
