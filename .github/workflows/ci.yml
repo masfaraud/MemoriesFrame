@@ -34,6 +34,7 @@ jobs:
         with:
           node-version: 24
           cache: npm
+          cache-dependency-path: memories-frame/package-lock.json
 
       - run: npm ci
       - run: npm test -- --watch=false --no-progress
@@ -48,6 +49,7 @@ jobs:
         with:
           node-version: 24
           cache: npm
+          cache-dependency-path: memories-frame/package-lock.json
 
       - run: npm ci
       - run: npm run build
