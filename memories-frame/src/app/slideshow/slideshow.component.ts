@@ -1,20 +1,22 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Photo } from '../models/photos.model';
 import { DatePipe } from '@angular/common';
+import { TimeAgoPipe } from '../pipes/time-ago.pipe';
 import { MapComponent } from '../map/map.component';
 import { ClockComponent } from '../clock/clock.component';
 import { PhotoService } from '../services/photo.service';
 
 @Component({
-  selector: 'app-slideshow',
-  standalone: true,
-  templateUrl: './slideshow.component.html',
-  styleUrl: './slideshow.component.scss',
-  imports: [DatePipe, MapComponent, ClockComponent]
+ selector:'app-slideshow',
+ standalone:true,
+ templateUrl:'./slideshow.component.html',
+ styleUrl:'./slideshow.component.scss',
+ imports: [DatePipe, MapComponent, ClockComponent, TimeAgoPipe]
 
 })
 export class SlideshowComponent implements OnInit {
-
+  
+  transitioning = false;
   @Output() photoChanged = new EventEmitter<Photo>();
   currentIndex = 0;
   currentPhoto: Photo;
@@ -29,9 +31,11 @@ export class SlideshowComponent implements OnInit {
     this.currentIndex = (this.currentIndex + 1) % this.photos.length;
     this.currentPhoto = this.photos[this.currentIndex]
 
-    this.photoChanged.emit(
-      this.currentPhoto
-    );
+      this.currentIndex = (this.currentIndex+1)%this.photos.length;
+      this.currentPhoto = this.photos[this.currentIndex]
+      this.transitioning = false;
+
+    
   }
 
   ngOnInit() {
@@ -52,7 +56,6 @@ export class SlideshowComponent implements OnInit {
           }, 5000);
 
         }
-
 
 
       });
