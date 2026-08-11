@@ -1,2 +1,2 @@
 # MemoriesFrame
-A pictures slideshow in Python memories-oriented
+A HTML memories-oriented pictures slideshow 

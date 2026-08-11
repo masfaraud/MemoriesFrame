@@ -2,7 +2,7 @@
 
     <img
         class="photo"
-        [src]="currentPhoto.path">
+        [src]="currentPhoto?.url">
 
     <app-clock class="clock"></app-clock>
 
@@ -13,9 +13,9 @@
 
     <div class="metadata">
 
-        <div>{{currentPhoto.location}}</div>
+        <div>{{currentPhoto?.location}}</div>
 
-        <div>{{currentPhoto.takenAt | date}}</div>
+        <div>{{currentPhoto?.takenAt | date}}</div>
 
     </div>
 

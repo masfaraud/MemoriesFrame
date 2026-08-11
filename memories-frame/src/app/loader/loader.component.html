@@ -1,0 +1,18 @@
+<div class="loader">
+
+    <input
+        #picker
+        type="file"
+        multiple
+        webkitdirectory
+        hidden
+        (change)="load($event)">
+
+    <button
+        (click)="picker.click()">
+
+        Choose photo folder
+
+    </button>
+
+</div>

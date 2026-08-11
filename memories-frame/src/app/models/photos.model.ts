@@ -1,10 +1,15 @@
 export interface Photo {
   id: string;
-  path: string;
   filename: string;
-  takenAt: Date;
+
+  url: string;
+  file: File;
+
+  takenAt?: Date;
+
   latitude?: number;
   longitude?: number;
+
   location?: string;
-  thumbnail?: string;
+
 }
