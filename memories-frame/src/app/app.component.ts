@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SlideshowComponent } from './slideshow/slideshow.component';
-import { ClockComponent } from './clock/clock.component';
-import { MapComponent } from './map/map.component';
-import { Photo } from './models/photos.model';
 
 @Component({
   selector: 'app-root',
-  imports: [SlideshowComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
