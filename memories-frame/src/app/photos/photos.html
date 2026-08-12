@@ -1,0 +1,41 @@
+<div class="photos-page">
+
+  <header class="photos-header">
+    <div>
+      <h1>Photos</h1>
+      <span class="photo-count">{{ photos.length }} photos</span>
+    </div>
+
+    <div class="photos-actions">
+      <button class="action-button secondary">
+        <i class="pi pi-cloud"></i>
+        <span>Add Immich source</span>
+      </button>
+
+      <button class="action-button secondary">
+        <i class="pi pi-images"></i>
+        <span>Add photos</span>
+      </button>
+
+      <button class="action-button primary">
+        <i class="pi pi-folder"></i>
+        <span>Add folder</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="photos-grid">
+    @for (photo of photos; track photo.url){
+
+    <div
+      class="photo-thumbnail" >
+      <img
+        [src]="photo.url"
+        [alt]="photo.url"
+        loading="lazy"
+      />
+    </div>
+    }
+  </main>
+
+</div>

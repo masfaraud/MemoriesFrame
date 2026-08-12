@@ -5,13 +5,14 @@ import { TimeAgoPipe } from '../pipes/time-ago.pipe';
 import { MapComponent } from '../map/map.component';
 import { ClockComponent } from '../clock/clock.component';
 import { PhotoService } from '../services/photo.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
  selector:'app-slideshow',
  standalone:true,
  templateUrl:'./slideshow.component.html',
  styleUrl:'./slideshow.component.scss',
- imports: [DatePipe, MapComponent, ClockComponent, TimeAgoPipe]
+ imports: [DatePipe, MapComponent, ClockComponent, TimeAgoPipe, RouterLink]
 
 })
 export class SlideshowComponent implements OnInit {
