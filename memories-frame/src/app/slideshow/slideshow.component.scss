@@ -5,7 +5,24 @@
     height: 100vh;
 
     overflow: hidden;
-    background: black;
+background:
+  radial-gradient(
+    ellipse at center,
+    transparent 20%,
+    rgba(0, 0, 0, 0.15) 45%,
+    rgba(0, 0, 0, 0.7) 100%
+  ),
+  radial-gradient(
+    circle at bottom left,
+    rgba(165, 205, 137, 0.8) 0%,
+    rgba(165, 205, 137, 0.35) 35%,
+    transparent 70%
+  ),
+  radial-gradient(
+    circle at top right,
+    rgba(165, 205, 137, 0.35) 0%,
+    transparent 60%
+  );
 }
 
 .photo {
@@ -69,4 +86,73 @@ app-map {
 .date {
     font-size: .9rem;
     opacity: .8;
+}
+
+.empty-state {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+//   color: white;
+  padding: 2rem;
+}
+
+.empty-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(165, 205, 137, 0.2);
+  color: #A5CD89;
+
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+
+  box-shadow: 0 0 40px rgba(165, 205, 137, 0.2);
+}
+
+.empty-state h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.6rem;
+}
+
+.empty-state p {
+  margin: 0 0 1.5rem;
+  opacity: 0.7;
+  line-height: 1.5;
+}
+
+.settings-button {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.4rem;
+
+  background: #A5CD89;
+  color: #1d2a20;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.settings-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(165, 205, 137, 0.35);
 }

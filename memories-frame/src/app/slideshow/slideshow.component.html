@@ -1,28 +1,51 @@
 <div class="slideshow">
+    @if(currentPhoto){
+        <img
+                class="photo"
+                alt="photo"
+                [class.fade]="transitioning"
+                [src]="currentPhoto.url">
 
-    <img
-        class="photo"
-        [class.fade]="transitioning"
-        [src]="currentPhoto.url">
-
-    <app-clock class="clock"></app-clock>
-
+    
     <app-map
         class="map"
         [photo]="currentPhoto">
     </app-map>
+    }
+    @else{
+        <div class="empty-state">
+        <div class="empty-icon">
+            <i class="pi pi-images"></i>
 
-<div class="metadata">
-    <div class="location">
-        {{ currentPhoto.location }}
-    </div>
+        </div>
 
-    <div class="date">
-        {{ currentPhoto.takenAt | date:'EEEE d MMMM y' }}
-    </div>
-    <div class="date">
-        {{ currentPhoto.takenAt | timeAgo:false }}
-    </div>
-</div>
+        <h2>No memories yet</h2>
 
+        <p>
+            Add a photo source in your settings<br />
+            to start your memories frame.
+        </p>
+
+        <button class="settings-button" routerLink="/photos">
+            <i class="pi pi-cog"></i>
+            Configure photos
+        </button>
+        </div>
+    }
+    <app-clock class="clock"></app-clock>
+
+@if(currentPhoto){
+    <div class="metadata">
+        <div class="location">
+            {{ currentPhoto.location }}
+        </div>
+
+        <div class="date">
+            {{ currentPhoto.takenAt | date:'EEEE d MMMM y' }}
+        </div>
+        <div class="date">
+            {{ currentPhoto.takenAt | timeAgo:false }}
+        </div>
+    </div>
+}
 </div>
