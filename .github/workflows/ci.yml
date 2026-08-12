@@ -22,22 +22,31 @@ jobs:
           cache-dependency-path: memories-frame/package-lock.json
 
       - run: npm ci
-      - run: ng lint
+      - run: npx ng lint
 
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-          cache-dependency-path: memories-frame/package-lock.json
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: npm
 
-      - run: npm ci
-      - run: npm test -- --watch=false --no-progress
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Setup Chrome
+      uses: browser-actions/setup-chrome@v2
+      with:
+        chrome-version: stable
+
+    - name: Run tests
+      run: npx ng test --watch=false --no-progress
 
   build:
     runs-on: ubuntu-latest
