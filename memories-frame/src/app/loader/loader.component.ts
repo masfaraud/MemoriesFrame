@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { PhotoService } from '../services/photo.service';
 
 @Component({
@@ -8,10 +8,7 @@ import { PhotoService } from '../services/photo.service';
   styleUrl: './loader.component.scss'
 })
 export class LoaderComponent {
-
-  constructor(
-        private photos: PhotoService
-    ) {}
+  private photos = inject(PhotoService);
 
     load(event: Event) {
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { Photo } from '../models/photos.model';
 import { DatePipe } from '@angular/common';
 import { TimeAgoPipe } from '../pipes/time-ago.pipe';
@@ -15,16 +15,14 @@ import { PhotoService } from '../services/photo.service';
 
 })
 export class SlideshowComponent implements OnInit {
+  private photoService = inject(PhotoService);
+
   
   transitioning = false;
   @Output() photoChanged = new EventEmitter<Photo>();
   currentIndex = 0;
   currentPhoto: Photo;
   photos: Photo[]
-
-  constructor(
-    private photoService: PhotoService
-  ) {}
 
   showNext() {
 

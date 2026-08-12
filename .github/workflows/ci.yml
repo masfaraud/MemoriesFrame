@@ -22,7 +22,7 @@ jobs:
           cache-dependency-path: memories-frame/package-lock.json
 
       - run: npm ci
-      - run: npm run lint
+      - run: ng lint
 
   test:
     runs-on: ubuntu-latest
