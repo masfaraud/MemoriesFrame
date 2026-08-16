@@ -41,7 +41,7 @@ jobs:
         run: npm run build
 
       - name: Inspect build output
-        run: find memories-frame/dist -maxdepth 3 -type f | head -50
+        run: find dist -maxdepth 3 -type f | head -50
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
