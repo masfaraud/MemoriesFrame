@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - ci2
 
 permissions:
   contents: read
@@ -39,8 +40,12 @@ jobs:
       - name: Build Angular app
         run: npm run build
 
+      - name: Inspect build output
+        run: find memories-frame/dist -maxdepth 3 -type f | head -50
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
