@@ -37,10 +37,7 @@ jobs:
         run: npm ci
 
       - name: Build Angular app
-        run: npm run build
-
-      - name: Inspect build output
-        run: find dist -maxdepth 3 -type f | head -50
+        run: npm run build -- --base-href /MemoriesFrame/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
