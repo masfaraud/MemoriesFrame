@@ -12,4 +12,17 @@ export class Photos {
 
   photos: Photo[] = [];
 
+  selectedPhotos: File[];
+
+  onPhotosSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+
+    if (!input.files) {
+      return;
+    }
+
+    this.selectedPhotos = Array.from(input.files);
+    console.log(this.selectedPhotos)
+}
+
 }

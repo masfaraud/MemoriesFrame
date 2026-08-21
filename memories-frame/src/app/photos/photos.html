@@ -25,12 +25,13 @@
         type="button"
       >
         <i class="pi pi-cloud"></i>
-        <span>Add Immich source</span>
+        <span>Sources</span>
       </button>
 
       <button
         class="action-button secondary"
         type="button"
+        (click)="photoInput.click()"
       >
         <i class="pi pi-images"></i>
         <span>Add photos</span>
@@ -62,3 +63,12 @@
   </main>
 
 </div>
+
+<input
+  #photoInput
+  type="file"
+  accept="image/*"
+  multiple
+  hidden
+  (change)="onPhotosSelected($event)"
+/>
