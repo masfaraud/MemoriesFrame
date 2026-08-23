@@ -15,7 +15,7 @@
 
       <div>
         <h1>Photos</h1>
-        <span class="photo-count">{{ photos.length }} photos</span>
+        <span class="photo-count">{{ photoViews.length }} photos</span>
       </div>
     </div>
 
@@ -25,12 +25,13 @@
         type="button"
       >
         <i class="pi pi-cloud"></i>
-        <span>Add Immich source</span>
+        <span>Sources</span>
       </button>
 
       <button
         class="action-button secondary"
         type="button"
+        (click)="photoInput.click()"
       >
         <i class="pi pi-images"></i>
         <span>Add photos</span>
@@ -43,12 +44,20 @@
         <i class="pi pi-folder"></i>
         <span>Add folder</span>
       </button>
+      <button
+        class="action-button danger"
+        type="button"
+        (click)="deleteAllPhotos()"
+      >
+        <i class="pi pi-ban"></i>
+        <span>Clear all</span>
+      </button>
     </div>
 
   </header>
 
   <main class="photos-grid">
-    @for (photo of photos; track photo.url){
+    @for (photo of photoViews; track photo.url){
 
     <div
       class="photo-thumbnail" >
@@ -62,3 +71,12 @@
   </main>
 
 </div>
+
+<input
+  #photoInput
+  type="file"
+  accept="image/*"
+  multiple
+  hidden
+  (change)="onPhotosSelected($event)"
+/>

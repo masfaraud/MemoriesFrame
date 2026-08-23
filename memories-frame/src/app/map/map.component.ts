@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 
 import * as L from 'leaflet';
-import { Photo } from '../models/photos.model';
+import { PhotoView } from '../models/photos.model';
 
 
 @Component({
@@ -18,7 +18,7 @@ import { Photo } from '../models/photos.model';
 export class MapComponent
   implements OnChanges, AfterViewInit {
 
-  @Input() photo?: Photo;
+  @Input() photo?: PhotoView;
 
   private map?: L.Map;
   private marker?: L.Marker;

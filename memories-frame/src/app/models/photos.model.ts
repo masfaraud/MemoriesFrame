@@ -13,3 +13,7 @@ export interface Photo {
   location?: string;
 
 }
+
+export interface PhotoView extends Photo {
+  url: string;
+}
