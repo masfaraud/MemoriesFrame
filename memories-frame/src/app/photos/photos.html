@@ -15,7 +15,7 @@
 
       <div>
         <h1>Photos</h1>
-        <span class="photo-count">{{ photos.length }} photos</span>
+        <span class="photo-count">{{ photoViews.length }} photos</span>
       </div>
     </div>
 
@@ -44,12 +44,20 @@
         <i class="pi pi-folder"></i>
         <span>Add folder</span>
       </button>
+      <button
+        class="action-button danger"
+        type="button"
+        (click)="deleteAllPhotos()"
+      >
+        <i class="pi pi-ban"></i>
+        <span>Clear all</span>
+      </button>
     </div>
 
   </header>
 
   <main class="photos-grid">
-    @for (photo of photos; track photo.url){
+    @for (photo of photoViews; track photo.url){
 
     <div
       class="photo-thumbnail" >

@@ -101,6 +101,16 @@
   box-shadow: 0 6px 20px rgba(165, 205, 137, 0.3);
 }
 
+.action-button.danger {
+  background: #d9534f;
+  color: #fff;
+  border-color: #d9534f;
+}
+
+.action-button.danger:hover {
+  box-shadow: 0 6px 20px rgba(217, 83, 79, 0.3);
+}
+
 /* Photo grid */
 
 .photos-grid {
